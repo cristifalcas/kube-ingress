@@ -34,3 +34,19 @@ spec:
           requests:
             cpu: 10m
             memory: 20Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: default-http-backend
+  name: default-http-backend
+  namespace: default
+spec:
+  type: ClusterIP
+  selector:
+    name: default-http-backend
+    app: default-http-backend
+  ports:
+  - port: 80
+    targetPort: 8080
